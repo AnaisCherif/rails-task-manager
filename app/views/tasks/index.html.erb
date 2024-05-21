@@ -1,0 +1,20 @@
+<h1 class="fs-2 p-5">My tasks</h1>
+
+<ul class="ps-5 list-group">
+  <% @tasks.each do |task| %>
+    <li class="list-group-item">
+      <% if task.completed == false %>
+          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+      <% else %>
+              <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" checked>
+      <%end%>
+
+        <%= link_to task.title, task_path(task) %> - <%= link_to "Destroy", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} %></li>
+      </label>
+    </li>
+  <% end %>
+</ul>
+
+<div class="p-5">
+<%= link_to "Add a new task", new_task_path(@task) %>
+</div>
